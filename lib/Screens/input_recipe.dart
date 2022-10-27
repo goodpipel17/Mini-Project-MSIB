@@ -67,111 +67,127 @@ class _input_recipeState extends State<input_recipe> {
           title: const Text('MASTHA'),
         ),
         body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 15, bottom: 15),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              width: 450,
-              height: 630,
-              child: Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width - 30,
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width - 80,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            (imageasli == null)
-                                ? const Text('Select Gambar')
-                                : uploudarea(),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(15, 15, 15, 15),
-                              child: TextFormField(
-                                style: GoogleFonts.poppins(),
-                                controller: titlecontroller,
-                                decoration: InputDecoration(
-                                    hintText: "Masukan Nama Resep",
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(20),
-                                        borderSide: const BorderSide()),
-                                    labelText: 'Nama resep'),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(15, 15, 15, 15),
-                              child: TextFormField(
-                                controller: deskripsicontroller,
-                                keyboardType: TextInputType.multiline,
-                                maxLines: 23,
-                                decoration: InputDecoration(
-                                  hintText: "Description",
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide()),
-                                  labelText: 'Decription',
+          child: Column(
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Center(
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 15, bottom: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    width: 450,
+                    height: 500,
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width - 30,
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width - 80,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          (imageasli == null)
+                                              ? const Text('Select Gambar')
+                                              : uploudarea(),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          15, 15, 15, 15),
+                                      child: TextFormField(
+                                        style: GoogleFonts.poppins(),
+                                        controller: titlecontroller,
+                                        decoration: InputDecoration(
+                                            hintText: "Masukan Nama Resep",
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                borderSide: const BorderSide()),
+                                            labelText: 'Nama resep'),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          15, 15, 15, 15),
+                                      child: TextFormField(
+                                        controller: deskripsicontroller,
+                                        keyboardType: TextInputType.multiline,
+                                        maxLines: 18,
+                                        decoration: InputDecoration(
+                                          hintText: "Description",
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              borderSide: const BorderSide()),
+                                          labelText: 'Decription',
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width -
+                                          90,
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width - 90,
-                            ),
-                            Container(
-                                decoration: const BoxDecoration(),
-                                height: 80,
-                                width: 420,
-                                padding:
-                                    const EdgeInsets.fromLTRB(15, 15, 15, 15),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      minimumSize: const Size(420, 50),
-                                      backgroundColor:
-                                          Colors.greenAccent.shade700,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8))),
-                                  onPressed: () async {
-                                    if (imageasli == null) {
-                                      const Text('Masukan Gambar');
-                                    } else {
-                                      await uploudimage();
-                                      datacollection.add({
-                                        'imagepath': imagepath,
-                                        'imageurl': imageURl,
-                                        'name': titlecontroller.text,
-                                        'deskripsi': deskripsicontroller.text
-                                      });
-                                      await _clear();
-                                      await clear();
-
-                                      titlecontroller.text = '';
-                                      deskripsicontroller.text = '';
-                                    }
-                                  },
-                                  child: Text(
-                                    'Add Data',
-                                    style: GoogleFonts.poppins(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ))
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 60),
+                child: Container(
+                  decoration: const BoxDecoration(),
+                  height: 80,
+                  width: 420,
+                  padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(420, 50),
+                        backgroundColor: Colors.greenAccent.shade700,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8))),
+                    onPressed: () async {
+                      if (imageasli == null) {
+                        const Text('Masukan Gambar');
+                      } else {
+                        await uploudimage();
+                        datacollection.add({
+                          'imagepath': imagepath,
+                          'imageurl': imageURl,
+                          'name': titlecontroller.text,
+                          'deskripsi': deskripsicontroller.text
+                        });
+
+                        titlecontroller.text = '';
+                        deskripsicontroller.text = '';
+                      }
+                    },
+                    child: Text(
+                      'Add Data',
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton(

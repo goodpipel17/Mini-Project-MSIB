@@ -117,13 +117,7 @@ class _kalkulator_pageState extends State<kalkulator_page> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8))),
                               onPressed: () {
-                                if (heightcontroller.text == 0 ||
-                                    weightcontroller.text == 0) {
-                                  heightcontroller.text = "0";
-                                  weightcontroller.text = "0";
-                                } else {
-                                  calculateBMI();
-                                }
+                                calculateBMI();
                               },
                               child: Text(
                                 'HITUNG BMI',
