@@ -44,6 +44,7 @@ class _MyWidgetState extends State<recipe_details> {
               var listalldocs = snapshot.data?.docs;
               if (snapshot.connectionState == ConnectionState.active) {
                 return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: Container(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
@@ -69,38 +70,48 @@ class _MyWidgetState extends State<recipe_details> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(left: 20.0),
-                                    child: Text(
-                                      "${(listalldocs?[page].data() as Map<String, dynamic>)['name']}",
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 40,
-                                        fontWeight: FontWeight.w700,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(left: 20.0),
+                                        child: Text(
+                                          "${(listalldocs?[page].data() as Map<String, dynamic>)['name']}",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(left: 20.0),
-                                    child: Text(
-                                      "${(listalldocs?[page].data() as Map<String, dynamic>)['deskripsi']}",
-                                      style: GoogleFonts.poppins(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w300,
+                                ),
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: 20.0, right: 20.0),
+                                        child: Text(
+                                          "${(listalldocs?[page].data() as Map<String, dynamic>)['deskripsi']}",
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],

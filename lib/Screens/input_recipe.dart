@@ -94,15 +94,9 @@ class _input_recipeState extends State<input_recipe> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    SingleChildScrollView(
-                                      child: Column(
-                                        children: [
-                                          (imageasli == null)
-                                              ? const Text('Select Gambar')
-                                              : uploudarea(),
-                                        ],
-                                      ),
-                                    ),
+                                    (imageasli == null)
+                                        ? const Text('Select Gambar')
+                                        : uploudarea(),
                                     Padding(
                                       padding: const EdgeInsets.fromLTRB(
                                           15, 15, 15, 15),
